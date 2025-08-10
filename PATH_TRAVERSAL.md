@@ -14,6 +14,7 @@
 The `flm_file` parameter from the GET request is concatenated directly with the backup directory path without sufficient sanitization. The current sanitization function `Flmbkp_Form_Helper::sanitizeInput_html()` does not prevent sequences like `../`, allowing an attacker to traverse directories outside of the intended backup folder.
 
 ```  modules\filemanager\controllers\backups.php
+// modules\filemanager\controllers\backups.php
 public function ajax_downloadfile()
     {
         check_ajax_referer('flmbkp_ajax_nonce', 'flmbkp_security');
